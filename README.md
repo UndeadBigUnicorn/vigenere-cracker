@@ -2,4 +2,4 @@
 
 Sample encrypted messages are enabled in `.txt` files.
 
-This cryptanalysis is not the best one and in some cases it finds the wrong key but anyway it is a good starting point for the Cryptanalysis.
+The Vigenere cipher was though to be completely unbreakable for hundreds of years, and indeed, if very long keys are used the vigenere cipher can be unbreakable. But if short keys are used, or if we have a lot of ciphertext compared to the key length, the vigenere cipher is quite solvable.
