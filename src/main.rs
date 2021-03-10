@@ -177,8 +177,14 @@ fn guess_key(substrings: Vec<String>) -> String {
     return key;
 }
 
+// read file and remove non alphabet chars
+fn read_file(path:  &str) -> String {
+    let input = read_to_string(path).unwrap();
+    String::from_utf8(uppercase_and_filter(&input)).unwrap()
+}
+
 fn main() {
-    let cryptogram = &read_to_string("message.txt").unwrap();
+    let cryptogram = &read_file("data/encrypted_message_key_statistics.txt");
     for length in possible_key_length(cryptogram) {
         let substring = transpose(cryptogram, length);
         let possible_key = guess_key(substring);
@@ -189,13 +195,4 @@ fn main() {
         println!("Message: {}", decrypt_message);
         println!("-----------------------------------");
     }
-
-    println!("-----------------------------------");
-    let small_cryptogram = &read_to_string("small_message.txt").unwrap();
-    println!("Original Message: {}", small_cryptogram);
-    let key = "bit";
-    println!("Key: {}", key);
-    let decrypt_message = vigenere(key, small_cryptogram, false);
-    println!("Decrypted Message: {}", decrypt_message);
-    println!("-----------------------------------");
 }
